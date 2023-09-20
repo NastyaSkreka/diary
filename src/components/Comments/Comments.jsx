@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styles from '../../styles/Forms.module.css'
+import styles from '../../styles/Comments.module.css'
 
 const Comments = () => {
     const [inputValue, setInputValue] = useState('');
