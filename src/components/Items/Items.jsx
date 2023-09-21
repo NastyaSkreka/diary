@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, deleteItem, setSelectedItem } from '../../features/items/itemsSlice';
 import styles from '../../styles/Items.module.css'
@@ -8,7 +8,7 @@ const Items = () => {
     const dispatch = useDispatch();
     const items = useSelector((state) => state.items.list);
     const [inputValue, setInputValue] = useState('');
-    const [isActive, setIsActive] = useState(false);
+    const [isActive, setIsActive] = useState(null);
 
     const handleInputChange = (e) => setInputValue(e.target.value);
   
@@ -25,7 +25,7 @@ const Items = () => {
 
     const handleSelectItem = (itemId) => { 
         dispatch(setSelectedItem(Number(itemId)));
-        setIsActive(!isActive);
+        setIsActive(Number(itemId));
       };
 
     return (
@@ -53,7 +53,7 @@ const Items = () => {
             <ListItem
               item={item}
               onSelect={() => handleSelectItem(item.id)} 
-              isActive={isActive} 
+              isActive={isActive === item.id} 
               onDelete={() => handleDelete(item.id)}
             />
           </li>

@@ -2,37 +2,33 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; 
 import { addComment} from '../../features/items/itemsSlice';
 import styles from '../../styles/Comments.module.css';
-import Comment from './Comment';
 
 const Comments = () => {
   const dispatch = useDispatch();
+  const selectedItemId = useSelector((state) => state.items.selectedId);
   const items = useSelector((state) => state.items.list);
   
   const [commentValue, setCommentValue] = useState('');
 
-  const handleAddComment = () => {
-    if (commentValue.trim() !== '') {
+    const handleAddComment = () => {
+    if (commentValue.trim() !== '' && selectedItemId) {
       dispatch(
-        addComment(commentValue)
+        addComment( commentValue )
       );
       setCommentValue('');
     }
   };
+
+  const selectedItem = items.find((item) => item.id === selectedItemId);
   
   return (  
     <div className={styles.card}>
       <h2 className={styles.title}>Comments</h2>
-      <ul className={styles.list}>
-        {items.map((item) => (
-          <li key={item.id}>
-            <ul className={styles.item}>
-              {item.comments.map((comment, index) => (
-                <li key={index} className={styles.comment}>{comment}</li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
+      <ul>
+          {selectedItem?.comments.map((comment, index) => (
+            <li key={index} className={styles.comment}>{comment}</li>
+          ))}
+        </ul>
       <div className={styles.wrapper}>
         <textarea
           placeholder="Type comment here..."
