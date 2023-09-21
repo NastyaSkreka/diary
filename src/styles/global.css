@@ -41,10 +41,11 @@ button {
   }
   
 .app {
-    width: 1400px;
+    width: 800px;
     margin: 0 auto;
     padding: 50px;
     display: flex;
+    flex-direction: column;
     gap: 10px;
     flex-wrap: wrap;
 }

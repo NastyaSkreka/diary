@@ -43,7 +43,33 @@ textarea:focus {
     font-size: 16px;
     transition: background-color 0.2s;
 }
+
+.button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.button:disabled:hover {
+    background-color: gray;
+    cursor: not-allowed;
+}
   
 .button:hover {
     background-color: #033870;
 }
+
+.item {
+    margin: 10px 0;
+}
+  
+.comment {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+
+  

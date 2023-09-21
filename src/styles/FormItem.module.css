@@ -2,26 +2,50 @@
   border: 1px solid #ccc;
   padding: 15px;
   margin: 20px 0;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
 }
 
 .card:not(:last-child){
     margin: 20px 0;
 }
 
-.button {
+.delete {
     border: 1px solid var(--red);
     color: var(--red); 
     padding: 8px 16px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-right: 10px;
 }
 
-.button:hover {
+.delete:hover {
     background-color: var(--red); 
+    color: #fff; 
+}
+
+.comment{
+    border: 1px solid var(--blue);
+    color: var(--blue); 
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.comment:hover {
+    background-color: var(--blue); 
+    color: #fff; 
+}
+
+.active {
+    background-color: var(--blue); 
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
     color: #fff; 
 }
 
