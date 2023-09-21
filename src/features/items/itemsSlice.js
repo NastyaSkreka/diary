@@ -8,7 +8,7 @@ const itemsSlice = createSlice({
 },
   reducers: {
     addItem: (state, action) => {
-        const newItem = { id: Date.now(), name: action.payload, comments: [] };
+        const newItem = { id: Date.now(), name: action.payload, comments:[]};
         state.list = [...state.list, newItem];
     },
     deleteItem: (state, action) => {
@@ -24,9 +24,12 @@ const itemsSlice = createSlice({
         const item = state.list.find((item) => item.id === state.selectedId);
         if (!item) return;
         item.comments.push(action.payload);
-    } 
+    }, 
+    setSelectedColor: (state, action) => {
+        state.selectedColor = action.payload;
+    },
   },
 });
 
-export const { addItem, deleteItem, setSelectedItem, removeSelectedItem, addComment } = itemsSlice.actions;
+export const { addItem, deleteItem, setSelectedItem, removeSelectedItem, addComment, setSelectedColor } = itemsSlice.actions;
 export default itemsSlice.reducer;
