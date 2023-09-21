@@ -1,18 +1,22 @@
 .card {
-  border: 1px solid #ccc;
-  padding: 15px;
-  margin: 20px 0;
-  align-items: center;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 20px 0;
+    align-items: center;
 }
+.text{
+    font-size: 20px;
+}
+ 
 .container{
     display: flex;
     justify-content: space-between;
 }
-
+  
 .card:not(:last-child){
     margin: 20px 0;
 }
-
+  
 .delete {
     border: 1px solid var(--red);
     color: var(--red); 
@@ -22,7 +26,7 @@
     transition: background-color 0.3s;
     margin-right: 10px;
 }
-
+  
 .delete:hover {
     background-color: var(--red); 
     color: #fff; 
@@ -48,4 +52,3 @@
     cursor: pointer;
     color: #fff; 
 }
-
