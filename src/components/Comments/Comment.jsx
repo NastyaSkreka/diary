@@ -1,14 +1,15 @@
-import React from 'react';
-import styles from '../../styles/Comment.module.css'
+import React from 'react'
+import styles from '../../styles/Comments.module.css'
 
-const Comment = ({item}) => {
-    return (
-    <div className={styles.card}>
-        
-        <div>
-            {item.comment}
-        </div>  
-    </div>
-    );
-};
-export default Comment;
+const Comment = ({ comment }) => {
+  return (
+    <li className={styles.comment}>
+      <div
+        className={styles.color}
+        style={{ backgroundColor: comment.color }}
+      />
+      <div className={styles.text}>{comment.text}</div>
+    </li>
+  )
+}
+export default Comment

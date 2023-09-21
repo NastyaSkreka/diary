@@ -4,14 +4,16 @@
     padding: 20px;
     border-radius: 8px;
     text-align: center;
-    width: 600px;
+    max-width: 600px;
+    width: 100%;
     margin: 0 auto;   
 }
   
 .title {
     font-size: 25px;
-    text-align: left;
+    text-align: center;
     margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .wrapper{
@@ -76,18 +78,18 @@ textarea:focus {
     margin-left: 15px;
 }
 
-/* ColorPicker.module.css */
-.colorPickerContainer {
+
+.colorContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  .colorSquare {
+.color {
     width: 50px;
     height: 50px;
-  }
+    border-radius: 50%;
+}
   
-  /* Другие стили здесь */
-  
+
   

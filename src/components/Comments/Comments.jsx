@@ -1,59 +1,54 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'; 
-import { addComment, setSelectedColor} from '../../features/items/itemsSlice';
-import { ChromePicker } from 'react-color';
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addComment } from '../../features/items/itemsSlice'
+import Comment from './Comment'
 
-import styles from '../../styles/Comments.module.css';
-
+import styles from '../../styles/Comments.module.css'
 
 const Comments = () => {
-    const selectedSqColor = useSelector((state) => state.items.selectedColor);
+  const dispatch = useDispatch()
 
-    const handleColorChange = (color) => {
-        dispatch(setSelectedColor(color.hex)); 
-    };
-    
-  const dispatch = useDispatch();
-  const selectedItemId = useSelector((state) => state.items.selectedId);
-  const items = useSelector((state) => state.items.list);
-  
-  const [commentValue, setCommentValue] = useState('');
+  const [commentValue, setCommentValue] = useState('')
+  const [color, setColor] = useState('#000')
 
-    const handleAddComment = () => {
+  const selectedItemId = useSelector((state) => state.items.selectedId)
+  const items = useSelector((state) => state.items.list)
+  const selectedItem = items.find((item) => item.id === selectedItemId)
+
+  const handleAddComment = () => {
     if (commentValue.trim() !== '' && selectedItemId) {
       dispatch(
         addComment({
-            text: commentValue, 
-            color: selectedSqColor, 
-          })
-      );
-      setCommentValue('');
+          text: commentValue,
+          color: color,
+        })
+      )
+      setCommentValue('')
     }
-  };
+  }
 
-  const selectedItem = items.find((item) => item.id === selectedItemId);
-  
-  return (  
+  return (
     <div className={styles.card}>
-
       <h2 className={styles.title}>Comments</h2>
-        <ul>
-            {selectedItem?.comments.map((comment, index) => (
-                <li key={index} className={styles.comment}>
-                    <div className={styles.colorSquare} style={{ backgroundColor: comment.color }}></div>
-                    <div className={styles.text}>{comment.text}</div>
-                </li>
-            ))}
-    </ul>
-   
+      <ul>
+        {selectedItem?.comments.map((comment, index) => (
+          <Comment key={index} comment={comment} />
+        ))}
+      </ul>
+
       <div className={styles.wrapper}>
-        <div className={styles.colorPickerContainer}>
-                <div className={styles.colorSquare}  style={{ backgroundColor: selectedSqColor }}></div>
-                <ChromePicker color={selectedSqColor} onChange={handleColorChange} />
-            </div>
+        <div className={styles.colorContainer}>
+          <input
+            style={{ height: '100%' }}
+            type="color"
+            title='Choose your color'
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+          />
+        </div>
         <textarea
           placeholder="Type comment here..."
-          value={commentValue} 
+          value={commentValue}
           onChange={(e) => setCommentValue(e.target.value)}
           className={styles.textarea}
         />
@@ -65,9 +60,8 @@ const Comments = () => {
           Add Comment
         </button>
       </div>
-     
     </div>
-  );
-};
+  )
+}
 
-export default Comments;
+export default Comments

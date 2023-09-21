@@ -1,10 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit';
-import itemsSlice from './items/itemsSlice';
+import { configureStore } from '@reduxjs/toolkit'
+import itemsSlice from './items/itemsSlice'
+import { saveState } from '../utils/local-storage';
 
 const store = configureStore({
   reducer: {
     items: itemsSlice,
   },
-});
+})
 
-export default store;
+store.subscribe(() => {
+    saveState(store.getState().items)
+})
+
+export default store
